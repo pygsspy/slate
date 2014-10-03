@@ -35,38 +35,32 @@ With Basic authentication, you pass along your credentials as part of every requ
 
 ### Cookies
 
-The cookie can be obtained by performing a POST request to `/_session`. With the cookie
-set, information about the logged in user can be retrieved with a GET
-request. With a DELETE request you can end the session. Further
-details are provided below.
+With Cookie authentication, you use your credentials to acquire a cookie which remains active for twenty-four hours. You send the cookie with all requests until it expires. The cookie can be obtained by performing a POST request to `/_session`. With the cookie set, information about the logged in user can be retrieved with a GET request. With a DELETE request you can end the session. 
 
-  -------------------------------------------------------------------------
-  Meth Path   Description             Headers                     Form
-  od                                                              Parameter
-                                                                  s
-  ---- ------ ----------------------- --------------------------- ---------
-  GET  /\_ses Returns cookie based    AuthSession cookie returned ---
-       sion   login user information  by POST request             
 
-  POST /\_ses Do cookie based user    `Content-Type: application/ name,
-       sion   login                   x-www-form-urlencoded`      password
+Method | Path       | Description                                 | Headers                                           | Form Parameters
+-------|------------|---------------------------------------------|---------------------------------------------------|--------------------------------------------------------------------------------------------
+GET    | /\_session | Returns cookie based login user information | AuthSession cookie returned by POST request       | ---
+POST   | /\_session | Do cookie based user login                  | `Content-Type: application/x-www-form-urlencoded` | name, password
+DELETE | /\_session | Logout cookie based user                    | AuthSession cookie returned by POST request       | ---
 
-  DELE /\_ses Logout cookie based     AuthSession cookie returned ---
-  TE   sion   user                    by POST request             
-  -------------------------------------------------------------------------
-
-Here is an example of a post request to obtain the authentication
-cookie.
+###### POST Request
 
 ```http
 name=YourUserName&password=YourPassword
 ```
 
-And this is the corresponding reply with the Set-Cookie header.
+Here is an example of a post request to obtain the authentication cookie.
+
+###### POST Reply
 
 ```http
-
+test1
 ```
+
+And this is the corresponding reply with the Set-Cookie header.
+
+
 
 Once you have obtained the cookie, you can make a GET request to obtain
 the username and its roles:
@@ -74,22 +68,21 @@ the username and its roles:
 The body of the reply looks like this:
 
 ```http
-
+test2
 ```
 
 To log out, you have to send a DELETE request to the same URL and sumbit
 the Cookie in the request.
 
 ```http
-
+test3
 ```
 
 This will result in the following response.
 
 ```http
-
+test4
 ```
-
 
 ```shell
 # get cookie
@@ -142,7 +135,3 @@ cloudant.auth($USERNAME, $PASSWORD, function (err, body, headers) {
   }
 });
 ```
-
-With Cookie authentication, you use your credentials to acquire a cookie which remains active for twenty four hours. You send the cookie with all requests until it expires.
-
-Logging out causes the cookie to expire immediately.
