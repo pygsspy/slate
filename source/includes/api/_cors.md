@@ -86,10 +86,12 @@ To reduce the risk:
 ```http
 PUT /_api/v2/user/config/cors HTTP/1.1
 Host: $USERNAME.cloudant.com
+Content-Type: application/json
 ```
 
 ```shell
-curl https://$USERNAME:$PASSWORD@$USERNAME.cloudant.com/_api/v2/user/config/cors -X PUT
+curl https://$USERNAME:$PASSWORD@$USERNAME.cloudant.com/_api/v2/user/config/cors -H 'Content-Type: application/json' -X PUT -T cors.json
+# where cors.json is a file with the following JSON document:
 ```
 
 ```json
@@ -103,7 +105,7 @@ curl https://$USERNAME:$PASSWORD@$USERNAME.cloudant.com/_api/v2/user/config/cors
 }
 ```
 
-> Response
+> Example response
 
 ```json
 { "ok": true }
@@ -144,7 +146,7 @@ Content-Length: 178
 }
 ```
 
-> If there is no CORS configuration yet, an empty JSON document is returned.
+> If there is no CORS configuration yet, an empty JSON document is returned:
 
 ```json
 {}
