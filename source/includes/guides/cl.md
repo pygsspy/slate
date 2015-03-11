@@ -98,24 +98,24 @@ load balancer.</div>
 				follows:</p>
 <pre class="pre codeblock"><code> 
 [cloudant]
-# System user which runs the db process
+\# System user which runs the db process
 db_user = cloudant
-# Server-wide database admin credentials. These have to be identical for every node of the cluster.
+\# Server-wide database admin credentials. These have to be identical for every node of the cluster.
 rebal_user =
 rebal_password =
-# Default filename for rebalance plans.
+\# Default filename for rebalance plans.
 rebal_plan = rebalance_plan
-# Mapping between public and private hostnames for nodes. This is only needed if
-# the host names have a private and a public interface and the load balancer does
-# not have access to the private interface. If the private host name can be used,
-# these fields can be left blank. Otherwise, the private host name extension
-# is replaced with the public host name extension to arrive at the public host
-# name. If you are unsure, try leaving these empty.
+\# Mapping between public and private hostnames for nodes. This is only needed if
+\# the host names have a private and a public interface and the load balancer does
+\# not have access to the private interface. If the private host name can be used,
+\# these fields can be left blank. Otherwise, the private host name extension
+\# is replaced with the public host name extension to arrive at the public host
+\# name. If you are unsure, try leaving these empty.
 
 private_host_ext =
 public_host_ext =
 [rebal]
-# Set to true to disable prompts on failure and just continue
+\# Set to true to disable prompts on failure and just continue
 batch_mode = false
  </code></pre>
 <p class="p">Confirm
@@ -319,3 +319,23 @@ see <a class="xref" href="clinstall_checking_health_cluster_with_weatherreport.h
 <div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../topics/clinstall_maintenance_tasks_overview.html" title="Use the following tasks to maintain your Cloudant Local cluster.">Cloudant Local maintenance tasks</a></div>
 </div>
 </div>
+
+<style>
+.content pre.codeblock, .content pre.codeblock code {
+  margin: 10px;
+  float: none;
+  background-color: inherit;
+  color: inherit;
+  position: relative;
+  left: 0;
+  top: 0;
+  border-top-style: none; 
+  border-top-width: 0; 
+}
+
+div.page-wrapper div.dark-box {
+
+  width: 0px;
+        
+}  
+</style>
