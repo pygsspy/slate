@@ -34,7 +34,7 @@ includes:
   - api/advanced_replication
   - api/active_tasks
   - api/advanced
-#  - api/errors
+  - api/try.md
 
 ---
 
